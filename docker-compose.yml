@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: ./app
+    container_name: bot_x
+    environment:
+      - BACKEND_URL=${BACKEND_URL}
+      - DATA_PATH=${DATA_PATH}
+      - BOT_API_KEY=${BOT_API_KEY}
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+    volumes:
+      - ${DATA_PATH}:${DATA_PATH} 
+    restart: always

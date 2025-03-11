@@ -1,0 +1,11 @@
+{
+    "color":[255, 255, 255],
+    "buttons":{
+        "playlist_manager_prev_page": "⬅️",
+        "playlist_manager_next_page": "➡️",
+        "playlist_manager_stop": "⏹️",
+        "playlist_manager_delete": "🗑️",
+        "playlist_manager_add": "➕",
+        "playlist_manager_remove": "➖"
+    }
+}

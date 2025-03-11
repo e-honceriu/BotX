@@ -1,0 +1,10 @@
+{
+    "color": [255, 255, 255],
+    "buttons": {
+        "ad_display_stop": "⏹️",
+        "ad_display_prev_page": "⬅️",
+        "ad_display_next_page": "➡️"
+    },
+    "buttonPrimaryColor": null,
+    "buttonSecondaryColor": null
+}

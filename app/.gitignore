@@ -1,0 +1,8 @@
+# Virtual Environment
+/venv/
+
+# Python Generated Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

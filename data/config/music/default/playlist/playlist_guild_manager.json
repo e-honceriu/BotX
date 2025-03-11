@@ -1,0 +1,11 @@
+{
+    "color":[255, 255, 255],
+    "buttons":{
+        "playlist_guild_manager_prev_page": "⬅️",
+        "playlist_guild_manager_next_page": "➡️",
+        "playlist_guild_manager_stop": "⏹️",
+        "playlist_guild_manager_manage": "🔧",
+        "playlist_guild_manager_add": "➕",
+        "playlist_guild_manager_remove": "➖"
+    }
+}

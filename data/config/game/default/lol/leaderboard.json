@@ -1,0 +1,48 @@
+{
+    "channelId": null,
+    "colors": {
+        "RDAM": [
+            40,
+            255,
+            255
+        ],
+        "RFDAM": [
+            137,
+            207,
+            240
+        ],
+        "RDSR": [
+            175,
+            225,
+            175
+        ],
+        "RFDSR": [
+            9,
+            121,
+            105
+        ],
+        "SR": [
+            170,
+            255,
+            0
+        ],
+        "OVERALL": [
+            238,
+            232,
+            170
+        ]
+    },
+    "labels": {
+        "RDAM": "Random Draft All Mid",
+        "RFDAM": "Random Fearless Draft All Mid",
+        "RDSR": "Random Draft Summoner's Rift",
+        "RFDSR": "Random Fearless Draft Summoner's Rift",
+        "SR": "Summoner's Rift",
+        "OVERALL": "Overall"
+    },
+    "buttons": {
+        "lol_leaderboard_refresh": "🔄",
+        "lol_leaderboard_prev_page": "⬅️",
+        "lol_leaderboard_next_page": "➡️"
+    }
+}

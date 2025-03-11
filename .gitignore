@@ -1,0 +1,11 @@
+# Virtual Env
+/venv/
+
+# Ignore log files
+**/*.log*
+
+# Local data 
+/local_data
+
+# Local environment
+.env.local

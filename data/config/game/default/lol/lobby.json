@@ -1,0 +1,41 @@
+{
+    "teams": [
+        {
+            "color": [
+                255, 0, 0
+            ],
+            "name": "Red",
+            "icon": "🟥",
+            "buttons": {
+                "lol_lobby_draft": "🎲",
+                "lol_lobby_ban": "🚫"
+            }
+        },
+        {
+            "color": [
+                0, 166, 255
+            ],
+            "name": "Blue",
+            "icon": "🟦",
+            "buttons": {
+                "lol_lobby_draft": "🎲",
+                "lol_lobby_ban": "🚫"
+            }
+        }
+    ],
+    "banLabels": [
+        "Champion's name"
+    ],
+    "lobbyColor": [0, 0, 0],
+    "champPoolRerolls": 3,
+    "statsFetchIntervalActive": 1,
+    "statsFetchIntervalInactive": 5,
+    "buttons": {
+        "lol_lobby_close": "⏹️",
+        "lol_lobby_empty_button": "▪️",
+        "lol_lobby_connect_disconnect": "🔌",
+        "lol_lobby_champ_pool_hidden_on": "👀",
+        "lol_lobby_champ_pool_hidden_off": "👀",
+        "lol_lobby_team": "🆕"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "volume": 100,
+    "ads": false,
+    "color": [0, 0, 0],
+    "buttons": {
+        "music_player_play_prev": "⏪",
+        "music_player_play_next": "⏩",
+        "music_player_resume": "▶️",
+        "music_player_pause": "⏸️",
+        "music_player_loop_q_on": "🔁",
+        "music_player_loop_q_off": "🔁",
+        "music_player_loop_song_on": "🔂",
+        "music_player_loop_song_off": "🔂",
+        "music_player_shuffle": "🔀",
+        "music_player_like": "👍",
+        "music_player_dislike": "👎",
+        "music_player_stop": "⏹️",
+        "music_player_prev_page": "⬅️",
+        "music_player_next_page": "➡️",
+        "music_player_display_q": "📜",
+        "music_player_volume_up": "🔊",
+        "music_player_volume_down": "🔉",
+        "music_player_restart": "🔄"
+    }
+}
