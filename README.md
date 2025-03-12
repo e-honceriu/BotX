@@ -4,7 +4,7 @@
 
 This is a highly customizable Discord bot built with Python and Docker, designed for high-quality music streaming and gaming features. It includes built-in playlist functionality and integrates seamlessly with platforms like YouTube and Spotify. Additionally, it supports League of Legends integration, providing a variety of tools for users to connect and manage game lobbies, track leaderboards, having a built-in elo system for competing with your friends. 
 
-This bot is an implementation integrated with the [BotCore](https://github.com/e-honceriu/BotX) backend, which is also a project developed by me. BotCore serves as the core infrastructure fot the bot, enabling seamless communication and funtionality between the bot and its various features.
+This bot is an implementation integrated with the [BotCore](https://github.com/e-honceriu/BotCore) backend, which is also a project developed by me. BotCore serves as the core infrastructure fot the bot, enabling seamless communication and funtionality between the bot and its various features.
 
 # Features
 
@@ -757,3 +757,5 @@ The bot provides several administrative features that help manage server activit
     }
     ```
 - **Permissions**: This command requires admin privileges to execute.
+
+---
