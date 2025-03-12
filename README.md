@@ -6,6 +6,95 @@ This is a highly customizable Discord bot built with Python and Docker, designed
 
 This bot is an implementation integrated with the [BotCore](https://github.com/e-honceriu/BotCore) backend, which is also a project developed by me. BotCore serves as the core infrastructure fot the bot, enabling seamless communication and funtionality between the bot and its various features.
 
+# Installation Guide
+
+Follow the steps below to setup and run the project using Docker.
+
+## Prerequisites
+
+- **Docker**: [Download Docker](https://www.docker.com/products/docker-desktop)
+- **Docker Compose**: Docker Compose is usually included with Docker Desktop, but if not, you can install it from [here](https://docs.docker.com/compose/install/).
+
+## 1. Clone the Repository
+
+- Start by cloning the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/e-honceriu/BotX
+    cd BotX
+    ```
+
+## 2. Configure Environment Variables
+
+- Modify or create the `.env` file located in the root directory of the project.
+
+- The `.env` file should include the following variables:
+
+    ```bash
+    BACKEND_URL=
+    DATA_PATH=
+    BOT_API_KEY=
+    DISCORD_TOKEN=
+    ```
+
+- **`BACKEND_URL`**: 
+    - The URL of the backend server that the bot communicates with (i.e., the URL where the [BotCore](https://github.com/e-honceriu/BotCore) runs).
+- **`DATA_PATH`**: 
+    - This is where your bot stores files it needs to operate, such as logs, configuration files, ad mp3 files. 
+    - You should specify the **absolute path** where you want these files to be saved.
+    - **Example**: `/home/user/bot/data`
+- **`BOT_API_KEY`**:
+    - The API key required to interact with the backend server, see [BotCore](https://github.com/e-honceriu/BotCore) in order to generate one.
+- **`DISCORD_TOKEN`**:
+    - This token is used to authenticate your bot with the Discord API. 
+    - You can get your token by creating a bot in the [Discord Developer Portal](https://discord.com/developers/applications). 
+    - After creating your bot, navigate to the "Bot" section of the application settings and copy the token.
+
+## 3. Build and Run the Bot
+
+- In the root directory of the project, run the following commands to load the environment variables, build the Docker image (if not already built) and start the bot. 
+- Note that this might take a while if it is the first time you are running it.
+
+    ```bash
+    source .env
+    docker compose up --build
+    ```
+
+## 4. Access the Bot in Discord
+
+- Once the bot is running:
+    - Invite the Bot to Your Server:
+        - If the bot is not already in your server, you need to invite it.
+        - Go to the OAuth2 tab in your bot's application page in the Discord Developer Portal.
+        - Under OAuth2 URL Generator, select the required permissions and generate an invite link.
+        - Use the generated link to invite the bot to your server.
+    - Use bot's commands
+        - Use the [List of Commands](#commands) provided in the documentation.
+
+## 5. Stop the Bot
+
+- You can stop all containers, including the bot, by running in root directory of the project:
+
+    ```bash
+    docker compose down
+    ```
+
+## 6. Updating the Bot
+
+To update the bot with the latest changes from the repository:
+
+- 1. Pull the latest changes from the repository
+
+    ```bash
+    git pull origin main
+    ```
+
+- 2. Rebuild the Docker images to apply the updates:
+
+    ```bash
+    docker compose up --build
+    ```
+
 # Features
 
 ### Music Streaming
