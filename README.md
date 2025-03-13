@@ -84,18 +84,20 @@ Follow the steps below to setup and run the project using Docker.
 
 ### **Linux/macOS**
 
-- In the root directory of the project, run the following commands to load the environment variables, build the Docker image (if not already built) and start the bot. 
+- In the root directory of the project, run the following commands to load the environment variables, build the Docker image (if not already built), and start the bot. 
+- `env.sh` reads the `.env` file and sets the environment variables for the session.
 
     ```bash
-    source .env
+    chmod +x env.sh
+    source env.sh
     docker compose up --build
     ```
 
 ### **Windows**
 
-- Windows does not support `source .env`, so you need a batch script to load environment variables, you can use `env.bat` provided in the root directory of the repository.
+- In the root directory of the project, run the following commands to load the environment variables using the env.bat script, build the Docker image (if not already built), and start the bot.
 - `env.bat` reads the `.env` file and sets the environment variables for the session.
-    
+
     ```bash
     call env.bat
     docker compose up --build
