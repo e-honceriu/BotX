@@ -1,3 +1,24 @@
+# **BotX**
+
+# Table of contents
+1. [Introduction](#introduction)
+2. [Installation Guide](#installation-guide)
+    - [Prerequisites](#prerequisites)
+    - [Clone the Repository](#1-clone-the-repository)
+    - [Configure Environment Variables](#2-configure-environment-variables)
+    - [Build and Run the Bot](#3-build-and-run-the-bot)
+    - [Access the Bot on Discord](#4-access-the-bot-in-discord)
+    - [Stop the Bot](#5-stop-the-bot)
+    - [Updating the Bot](#6-updating-the-bot)
+3. [Features](#features)
+    - [Admin Features](#admin-features)
+    - [Music Streaming](#music-streaming)
+    - [League of Legends Integration](#league-of-legends-integration)
+4. [Commands](#commands)
+    - [Admin Commands](#admin-commands)
+    - [Music Commands](#music-commands)
+    - [League of Legends Commands](#league-of-legends-commands)
+
 # Introduction
 
 ### Welcome to BotX!
@@ -52,11 +73,24 @@ Follow the steps below to setup and run the project using Docker.
 
 ## 3. Build and Run the Bot
 
-- In the root directory of the project, run the following commands to load the environment variables, build the Docker image (if not already built) and start the bot. 
 - Note that this might take a while if it is the first time you are running it.
+
+### **Linux/macOS**
+
+- In the root directory of the project, run the following commands to load the environment variables, build the Docker image (if not already built) and start the bot. 
 
     ```bash
     source .env
+    docker compose up --build
+    ```
+
+### **Windows**
+
+- Windows does not support `source .env`, so you need a batch script to load environment variables, you can use `env.bat` provided in the root directory of the repository.
+- `env.bat` reads the `.env` file and sets the environment variables for the session.
+    
+    ```bash
+    call env.bat
     docker compose up --build
     ```
 
@@ -96,6 +130,16 @@ To update the bot with the latest changes from the repository:
     ```
 
 # Features
+
+### Admin Features
+
+The bot provides several administrative features that help manage server activities and perform cleanups.
+
+**Key Features**
+1. **Purge Messages**:
+    - Deletes messages based on custom criteria such as user, channel, user type.
+2. **Retrieve Server Log**:
+    - Get the bot's logs for the server for troubleshooting and review.
 
 ### Music Streaming
 
@@ -152,18 +196,6 @@ The bot integrates with League of Legends, allowing users to monitor leaderboard
     - Change the color scheme of the lobbies, leaderboards, and custom buttons.
     - Customize the icons and colors of the teams, choosing them randomly.
     - Set the channels where the leaderboards will be displayed.
-
-### Admin Features
-
-The bot provides several administrative features that help manage server activities and perform cleanups.
-
-**Key Features**
-1. **Purge Bot Messages**:
-    - Deletes all bot messages.
-2. **Purge User Messages**:
-    - Deletes all messages from a specific user.
-3. **Retrieve Server Log**:
-    - Get the bot's logs for the server for troubleshooting and review.
 
 # Commands
 
@@ -848,3 +880,8 @@ The bot provides several administrative features that help manage server activit
 - **Permissions**: This command requires admin privileges to execute.
 
 ---
+
+# Configuration Options
+
+This section explains the fields in the config files and what each of them does. You can use this as a reference to modify the default settings.
+
