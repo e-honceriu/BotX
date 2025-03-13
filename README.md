@@ -18,6 +18,13 @@
     - [Admin Commands](#admin-commands)
     - [Music Commands](#music-commands)
     - [League of Legends Commands](#league-of-legends-commands)
+5. [Interaction Buttons](#interaction-buttons)
+    - [Music Player Buttons](#music-player-buttons)
+    - [Playlist Manager Buttons](#playlist-manager-buttons)
+    - [Playlist Guild Manager Buttons](#playlist-guild-manager-buttons)
+    - [Ad Display Buttons](#ad-display-buttons)
+    - [League of Legends Leaderboard Buttons](#league-of-legends-leaderboard-buttons)
+    - [League of Legends Lobby Buttons](#league-of-legends-lobby-buttons)
 
 # Introduction
 
@@ -881,7 +888,182 @@ The bot integrates with League of Legends, allowing users to monitor leaderboard
 
 ---
 
+# Interaction Buttons
+
+This section explains the functionality of each button available to interact with the bot during a game session. The bot provides various interactive buttons for interacting with the music player, League of Legends lobbies, and much more.
+
+---
+
+### **Music Player Buttons**
+
+![Music Player Screenshot](./assets/default_music_player.PNG)
+
+#### **Player Control**
+
+- **`⏪ music_player_play_prev`** → Plays the previous song in the queue.
+
+- **`⏩ music_player_play_next`** → Plays the next song in the queue.
+
+- **`⏸️ music_player_pause`** → Pauses the current song.
+    - **State change**: Player moves from **Playing** to **Paused**
+
+    ![Paused Player](./assets/default_music_player_paused.PNG)
+
+- **`▶️ music_player_resume`** → Resumes playing the song after it has been paused.
+    - **State change**: Player moves from **Paused** to **Playing**
+
+- **`📜 music_player_display_q`** → Displays the current song queue.
+    - **State change**: Toggle between showing and hiding the queue.
+
+    ![Q On Player](./assets/default_music_player_q_on.PNG)
+
+- **`🔁 music_player_loop_q_on`** → Turns off the loop of the entire queue.
+
+- **`🔁 music_player_loop_q_off`** → Turns on the loop of the entire queue.
+
+- **`🔂 music_player_loop_song_on`** → Turns off the loop of the current song.
+
+- **`🔂 music_player_loop_song_off`** → Turns on the loop of current song.
+
+- **`🔀 music_player_shuffle`** → Shuffles the songs in the queue, playing them in random order.
+
+- **`🔄 music_player_restart`** → Restarts the current song from the beginning.
+
+- **`⏹️ music_player_stop`** → This button stops music player.
+
+#### **Navigation**
+
+- **`⬅️ music_player_prev_page`** → Moves to the previous page of the song queue (if there are multiple pages and the queue display in on).
+
+- **`➡️ music_player_next_page`** → Moves to the next page of the song queue (if there are multiple pages and the queue display in on).
+
+#### **Volume Control**
+
+- **`🔊 music_player_volume_up`** → Increases the volume of the music player.
+
+- **`🔉 music_player_volume_down`** → Decreases the volume of the music player.
+
+#### **Engagement**
+
+- **`👍 music_player_like`** → Likes the current song playing.
+
+- **`👎 music_player_dislike`** → Dislikes the current song playing.
+
+---
+
+### **Playlist Manager Buttons**
+
+![Playlist Manager ScreenShot](./assets/default_playlist_manager.PNG)
+
+#### **Navigation**
+
+- **`⬅️ playlist_manager_prev_page`** → Moves to the previous page of the playlist (if there are multiple pages).
+
+- **`➡️ playlist_manager_next_page`** → Moves to the next page of the playlist (if there are multiple pages).
+
+#### **Management**
+
+- **`⏹️ playlist_manager_stop`** → Closes the playlist manager.
+
+- **`🗑️ playlist_manager_delete`** -> Deletes the playlist.
+
+- **`➕ playlist_manager_add`** -> Add song or external playlist to the managed playlist.
+
+- **`➖ playlist_manager_remove`** -> Removes a song from the playlist.
+
+---
+
+### **Playlist Guild Manager Buttons**
+
+![Playlist Guild Manager Screenshot](./assets/default_playlist_guild_manager.PNG)
+
+#### **Navigation**
+
+- **`⬅️ playlist_guild_manager_prev_page`** → Navigates to the previous page in the playlist manager (if there are multiple pages).
+
+- **`➡️ playlist_guild_manager_next_page`** → Navigates to the next page in the playlist manager (if there are multiple pages).
+
+#### **Management**
+
+- **`⏹️ playlist_guild_manager_stop`** → Closes the playlist guild manager.
+
+- **`🔧 playlist_guild_manager_manage`** → Opens the playlist manager for the specified playlist.
+
+- **`➕ playlist_guild_manager_add`** → Create a new playlist.
+
+- **`➖ playlist_guild_manager_remove`** → Delete a playlist.
+
+---
+
+### **Ad Display Buttons**
+
+![Ad Display Screenshot](./assets/default_ad_display.PNG)
+
+#### **Navigation**
+
+- **`⬅️ ad_display_prev_page`** → Navigates to the previous page in the ad display (if there are multiple pages).
+
+- **`➡️ ad_display_next_page`** → Navigates to the next page in the ad display (if there are multiple pages).
+
+#### **Control**
+
+- **`⏹️ ad_display_stop`** → Stops the current ad display session.
+
+---
+
+### League of Legends Leaderboard Buttons
+
+![Lol Leaderboard Screenshot](./assets/default_lol_leaderboard.PNG)
+
+#### **Navigation**
+
+- **`⬅️ lol_leaderboard_prev_page`** Navigates to the previous page in the leaderboard (if there are multiple pages).
+
+- **`⬅️ lol_leaderboard_next_page`** Navigates to the next page in the leaderboard (if there are multiple pages).
+
+#### **Control**
+
+- **`🔄 lol_leaderboard_refresh`** Refreshes the leaderboard to display the most current data.
+
+---
+
+### League of Legends Lobby Buttons
+
+![Lol Lobby Screenshot](./assets/lol_lobby_default.PNG)
+![Lol Lobby Teams Screenshot](./assets/lol_lobby_teams_default.PNG)
+
+#### **Lobby**
+
+- **`⏹️ lol_lobby_close`** -> Closes the current lobby session.
+
+- **`▪️ lol_lobby_empty_button`** -> An empty button used for display purposes (no action).
+
+- **`🔌 lol_lobby_connect_disconnect`** → Toggles the connection status: connects if not already in the lobby, or disconnects if currently in the lobby.
+
+- **`🆕 lol_lobby_team`** → Creates a new match, generating new teams.
+
+- **`🟦 blue_team_icon`** -> Sets the winner as the blue team.
+
+- **`🟥 red_team_icon`** -> Sets the winner as the red team.
+
+- **`👀 lol_lobby_champ_pool_hidden_on`** → Hides the champion pool for the players.
+
+- **`👀 lol_lobby_champ_pool_hidden_off`** → Reveals the champion pool for the players.
+
+    ![Lol Lobby Teams Champ Pool On Screenshot](./assets/lol_lobby_team_champ_pool_default.PNG)
+
+
+#### **Team**
+
+- **`🎲 lol_lobby_draft`** → Generates random drafts for the game mode (if applicable) and sends them privately to each team player.
+
+- **`🚫 lol_lobby_ban`** → Bans a champion for the random draft.
+
+
 # Configuration Options
 
 This section explains the fields in the config files and what each of them does. You can use this as a reference to modify the default settings.
+
+---
+
 
