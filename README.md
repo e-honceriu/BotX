@@ -465,7 +465,7 @@ The bot integrates with League of Legends, allowing users to monitor leaderboard
 - **Parameters**:
     - `playlist_title`: The title of the playlist to manage.
 - **Example**:
-    - `/playlist_manage My Playlist` -> Starts the playlist manager for "My Playlist".
+    - `/playlist_manage My Playlist` → Starts the playlist manager for "My Playlist".
 - **Permissions**: Only the owner of the playlist can trigger this command.
 
 ---
@@ -507,7 +507,7 @@ The bot integrates with League of Legends, allowing users to monitor leaderboard
 - **Parameters**:
     - `ad_type`: The type of ad (e.g., `OPENNING`, `CONTENT`, `CLOSING`).
 - **Example**:
-    - `/show_ads OPENNING` -> Lists all the openning ads.
+    - `/show_ads OPENNING` → Lists all the openning ads.
 - **Permissions**: Any user can trigger this command.
 
 ---
@@ -522,7 +522,7 @@ The bot integrates with League of Legends, allowing users to monitor leaderboard
     - `ad_type`: The type of ad (e.g., `OPENNING`, `CONTENT`, `CLOSING`).
     - `ad_name`: The name of the ad to remove.
 - **Example**:
-    - `/remove_ad OPENNING openning_1` -> Removes the "openning_1.mp3" from the openning ads list. 
+    - `/remove_ad OPENNING openning_1` → Removes the "openning_1.mp3" from the openning ads list. 
 - **Permissions**: This command requires admin privileges to execute.
 
 ---
@@ -967,11 +967,11 @@ This section explains the functionality of each button available to interact wit
 
 - **`⏹️ playlist_manager_stop`** → Closes the playlist manager.
 
-- **`🗑️ playlist_manager_delete`** -> Deletes the playlist.
+- **`🗑️ playlist_manager_delete`** → Deletes the playlist.
 
-- **`➕ playlist_manager_add`** -> Add song or external playlist to the managed playlist.
+- **`➕ playlist_manager_add`** → Add song or external playlist to the managed playlist.
 
-- **`➖ playlist_manager_remove`** -> Removes a song from the playlist.
+- **`➖ playlist_manager_remove`** → Removes a song from the playlist.
 
 ---
 
@@ -1036,17 +1036,17 @@ This section explains the functionality of each button available to interact wit
 
 #### **Lobby**
 
-- **`⏹️ lol_lobby_close`** -> Closes the current lobby session.
+- **`⏹️ lol_lobby_close`** → Closes the current lobby session.
 
-- **`▪️ lol_lobby_empty_button`** -> An empty button used for display purposes (no action).
+- **`▪️ lol_lobby_empty_button`** → An empty button used for display purposes (no action).
 
 - **`🔌 lol_lobby_connect_disconnect`** → Toggles the connection status: connects if not already in the lobby, or disconnects if currently in the lobby.
 
 - **`🆕 lol_lobby_team`** → Creates a new match, generating new teams.
 
-- **`🟦 blue_team_icon`** -> Sets the winner as the blue team.
+- **`🟦 blue_team_icon`** → Sets the winner as the blue team.
 
-- **`🟥 red_team_icon`** -> Sets the winner as the red team.
+- **`🟥 red_team_icon`** → Sets the winner as the red team.
 
 - **`👀 lol_lobby_champ_pool_hidden_on`** → Hides the champion pool for the players.
 
