@@ -307,7 +307,7 @@ async def set_ads_activity(interaction: discord.Interaction, value: bool):
         config.set_ads_activity(value)
 
         if guild.id in music_players:
-            await music_players[guild.id].reload_config()
+            await music_players[guild.id].reload_config(config)
 
         await responde(interaction, f"Ads {'enabled' if config.get_ads()  else 'disabled'}.")
         logger.info(f"Ads {'enabled' if config.get_ads() else 'disabled'}.", interaction=interaction)
