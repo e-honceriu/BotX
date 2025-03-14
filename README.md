@@ -1,6 +1,6 @@
 # **BotX**
 
-# Table of contents
+# Table of Contents
 1. [Introduction](#introduction)
 2. [Installation Guide](#installation-guide)
     - [Prerequisites](#prerequisites)
@@ -25,6 +25,15 @@
     - [Ad Display Buttons](#ad-display-buttons)
     - [League of Legends Leaderboard Buttons](#league-of-legends-leaderboard-buttons)
     - [League of Legends Lobby Buttons](#league-of-legends-lobby-buttons)
+6. [Configuration Options](#configuration-options)
+    - [Custom Emoji Coloring](#custom-emoji-coloring)
+    - [Music Player Configuration](#music-player-configuration)
+    - [Ad Display Configuration](#ad-display-configuration)
+    - [Playlist Manager Configuration](#playlist-manager-configuration)
+    - [Playlist Guild Manager Configuration](#playlist-guild-manager-configuration)
+    - [League of Legends Leaderboard Configuration](#league-of-legends-leaderboard-configuration)
+    - [League of Legends Lobby Configuration](#league-of-legends-lobby-configuration)
+    - [League of Legends Emojis Configuration](#league-of-legends-emojis-configuration)
 
 # Introduction
 
@@ -1068,4 +1077,461 @@ This section explains the fields in the config files and what each of them does.
 
 ---
 
+## Custom Emoji Coloring
 
+Custom emojis can be dynamically recolored based on the colors specified in the configuration files of the components containing buttons. This allows for better theme integration and customization.
+
+### **How coloring works**
+
+Each emoji is processed by replacing its dark and light tones with the specified colors from the configuration:
+
+- **Primary Color** → Replaces darker areas of the emoji.
+- **Secondary Color** → Replaces lighter areas of the emoji.  
+
+### **Example Configuration**
+
+- Each component that supports buttons allows color customization through its configuration file:
+
+    ```json
+    {
+        "buttonPrimaryColor": [Rp, Gp, Bp],
+        "buttonSecondaryColor": [Rs, Gs, Bs]
+    }
+    ```
+
+    - buttonPrimaryColor represents the primary color using RGB values [Rp, Gp, Bp] (red, green, blue). This color is applied to the darker tones of the emoji.
+    - buttonSecondaryColor represents the secondary color using RGB values [Rs, Gs, Bs] (red, green, blue). This color is applied to the lighter tones of the emoji.
+
+- For example, consider the following **custom shuffle emoji**:  ![Custom shuffle button](./assets/custom_shuffle.webp)  
+
+    With the following configuration:  
+
+    ```json
+    {
+        "buttonPrimaryColor": [33, 53, 85],
+        "buttonSecondaryColor": [245, 239, 231]
+    }
+    ```
+
+    This results in the following colored shuffle button: ![Custom colored shuffle button](./assets/colored_custom_shuffle.webp)
+
+### **Emoji Cache**
+
+- The **emoji cache** plays a key role in storing and retrieving custom emojis, ensuring that once a colored emoji is created, it can be reused without having to regenerate it every time. 
+- This mechanism also helps optimize API calls by reducing the need to create new emojis if they already exist in the cache.
+
+#### **Cache Structure**
+
+- The cache is stored in a JSON file (`cache.json`) in the `emoji` directory inside the directory located at the `$DATA_PATH` path environemnt variable.
+- It contains the following data:
+    - `saveGuildIds`: A list of guil IDs (servers) where custom emojis are saved.
+    - `createdEmojis`: A nested dictionary that stores the created custom emojis, organized by emoji name and its respective colors, this is automatically managed bt the bot.
+
+- **Default cache file**:
+
+    ```json
+    {
+        "saveGuildIds": [],
+        "createdEmojis": {}
+    }
+    ```
+
+#### **How the cache works**
+
+- **Storing emojis**:
+    - When a custom emoji is generated with specific colors (primary and secondary), it is saved in the cache under the corresponding emoji name and color combination, i.e.:
+    ```json
+    {
+        "custom-emoji-name": {
+            "#563A9C": {
+                "#FFF7D1": "colored-custom-emoji-id"
+            }
+        }
+    }
+    ```
+    - This allows the bot to reuse the emoji in future requests.
+
+- **Retrieving Emojis**:
+    - When the bot needs to use a custom emoji, it checks the cache to see if a colored version of that emoji exists. 
+    - If it does, the bot fetches it from the cache. 
+    - If not, the bot generates the emoji, stores it in the cache, and then uses it.
+
+- **Cache eviction**:
+    - If the emoji limit for every guild (server) is reached, some emojis will be removed to make space for new one.
+
+- **Important Notes**:
+    - The **cache is automatically managed by the bot**, which handles adding new custom emojis and removing outdated or redundant ones as necessary.
+    - **Manual intervention is not typically required**, but if you modify the cache data directly, it could lead to discrepancies. In such cases, you may need to manually delete created emojis to free up space for new ones.
+
+## Music Player Configuration
+
+- This configuration file manages the settings and controls for the bot’s music player functionality. It includes options for volume, ads, colors, and button customizations.
+
+- **Default Configuration File**
+
+    ```json
+    {
+        "volume": 100,
+        "ads": false,
+        "color": [0, 0, 0],
+        "buttons": {
+            "music_player_play_prev": "⏪",
+            "music_player_play_next": "⏩",
+            "music_player_resume": "▶️",
+            "music_player_pause": "⏸️",
+            "music_player_loop_q_on": "🔁",
+            "music_player_loop_q_off": "🔁",
+            "music_player_loop_song_on": "🔂",
+            "music_player_loop_song_off": "🔂",
+            "music_player_shuffle": "🔀",
+            "music_player_like": "👍",
+            "music_player_dislike": "👎",
+            "music_player_stop": "⏹️",
+            "music_player_prev_page": "⬅️",
+            "music_player_next_page": "➡️",
+            "music_player_display_q": "📜",
+            "music_player_volume_up": "🔊",
+            "music_player_volume_down": "🔉",
+            "music_player_restart": "🔄"
+        },
+        "buttonPrimaryColor": null,
+        "buttonSecondaryColor": null
+    }
+    ```
+- **Fields**:
+
+    - **`volume`**: *integer*  
+    Defines the default volume level of the music player.   
+    The value must be an integer between 0 and 100 (default is 100).  
+
+    - **`ads`**: *boolean*  
+    Determines whether ads will be played during music playback:`true` → ads will play, `false` → ads are disabled.
+
+    - **`color`**: *array of integers (RGB values)*  
+    Defines the RGB color of the music player’s embed. The format is [R, G, B].
+
+    - **`buttons`**: *object*  
+    A set of emoji buttons that control the music player's functionality. Each button corresponds to a specific action.  
+    See [Music Player Buttons](#music-player-buttons) for more information about each button.
+
+    - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+      Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+    - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+      Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.  
+
+
+## Ad Display Configuration
+
+- **Default Configuration File**:
+
+    ```json
+    {
+        "color": [255, 255, 255],
+        "buttons": {
+            "ad_display_stop": "⏹️",
+            "ad_display_prev_page": "⬅️",
+            "ad_display_next_page": "➡️"
+        },
+        "buttonPrimaryColor": null,
+        "buttonSecondaryColor": null
+    }
+    ```
+
+- **Fields**:
+
+    - **`color`**: *array of integers (RGB values)*  
+      Defines the RGB color of the ad display embed. The format is [R, G, B].
+
+    - **`buttons`**: *object*  
+      A set of emoji buttons that control ad display functionality. Each button corresponds to a specific action.  
+      See [Ad Display Buttons](#ad-display-buttons) for more information about each button.
+
+    - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+      Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+    - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+      Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.  
+
+---
+
+## Playlist Manager Configuration
+
+- **Default Configuration File**:
+
+    ```json
+    {
+        "color": [255, 255, 255],
+        "buttons": {
+            "playlist_manager_prev_page": "⬅️",
+            "playlist_manager_next_page": "➡️",
+            "playlist_manager_stop": "⏹️",
+            "playlist_manager_delete": "🗑️",
+            "playlist_manager_add": "➕",
+            "playlist_manager_remove": "➖"
+        },
+        "buttonPrimaryColor": null,
+        "buttonSecondaryColor": null
+    }
+    ```
+
+- **Fields**:
+
+    - **`color`**: *array of integers (RGB values)*  
+      Defines the RGB color of the playlist manager's embed. The format is [R, G, B].  
+
+    - **`buttons`**: *object*  
+      A set of emoji buttons that control playlist management functionality. Each button corresponds to a specific action.  
+      See [Playlist Manager Buttons](#playlist-manager-buttons) for more information about each button.
+
+    - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+      Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+    - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+      Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.   
+
+
+---
+
+## Playlist Guild Manager Configuration
+
+- **Default Configuration File**:
+
+    ```json
+    {
+        "color": [255, 255, 255],
+        "buttons": {
+            "playlist_guild_manager_prev_page": "⬅️",
+            "playlist_guild_manager_next_page": "➡️",
+            "playlist_guild_manager_stop": "⏹️",
+            "playlist_guild_manager_manage": "🔧",
+            "playlist_guild_manager_add": "➕",
+            "playlist_guild_manager_remove": "➖"
+        },
+        "buttonPrimaryColor": null,
+        "buttonSecondaryColor": null
+    }
+    ```
+
+- **Fields**:
+
+    - **`color`**: *array of integers (RGB values)*  
+      Defines the RGB color of the playlist guild manager's embed. The format is [R, G, B].
+
+    - **`buttons`**: *object*  
+      A set of emoji buttons that control playlist guild management functionality. Each button corresponds to a specific action.  
+      See [Playlist Guild Manager Buttons](#playlist-guild-manager-buttons) for more information about each button.
+
+    - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+      Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+    - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+      Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.  
+
+---
+
+## League of Legends Leaderboard Configuration
+
+- **Default Configuration File**:
+
+    ```json
+    {
+        "channelId": null,
+        "colors": {
+            "RDAM": [40, 255, 255],
+            "RFDAM": [137, 207, 240],
+            "RDSR": [175, 225, 175],
+            "RFDSR": [9, 121, 105],
+            "SR": [170, 255, 0],
+            "OVERALL": [238, 232, 170]
+        },
+        "labels": {
+            "RDAM": "Random Draft All Mid",
+            "RFDAM": "Random Fearless Draft All Mid",
+            "RDSR": "Random Draft Summoner's Rift",
+            "RFDSR": "Random Fearless Draft Summoner's Rift",
+            "SR": "Summoner's Rift",
+            "OVERALL": "Overall"
+        },
+        "buttons": {
+            "lol_leaderboard_refresh": "🔄",
+            "lol_leaderboard_prev_page": "⬅️",
+            "lol_leaderboard_next_page": "➡️"
+        },
+        "buttonPrimaryColor": null,
+        "buttonSecondaryColor": null
+    }
+    ```
+
+- **Fields**:
+
+    - **`channelId`**: *null or string*  
+      Defines the specific channel where the leaderboard will be displayed. If set to `null`, no specific channel is selected.  
+
+    - **`colors`**: *object*  
+      Defines the RGB color of each game type leaderboard's embed. The format is [R, G, B].
+
+    - **`labels`**: *object*  
+      Defines the text labels corresponding to each leaderboard category. These labels will be used to display the game type names.  
+
+    - **`buttons`**: *object*  
+      A set of emoji buttons that control the leaderboard. Each button corresponds to a specific action.  
+      See [League of Legends Leaderboard Buttons](#league-of-legends-leaderboard-buttons) for more information about each button.
+
+    - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+      Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+    - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+      Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.
+
+---
+
+## League of Legends Lobby Configuration
+
+- **Default Configuration File**:
+
+    ```json
+    {
+        "teams": [
+            {
+                "color": [255, 0, 0],
+                "name": "Red",
+                "icon": "🟥",
+                "buttons": {
+                    "lol_lobby_draft": "🎲",
+                    "lol_lobby_ban": "🚫"
+                },
+                "buttonPrimaryColor": null,
+                "buttonSecondaryColor": null
+            },
+            {
+                "color": [0, 166, 255],
+                "name": "Blue",
+                "icon": "🟦",
+                "buttons": {
+                    "lol_lobby_draft": "🎲",
+                    "lol_lobby_ban": "🚫"
+                },
+                "buttonPrimaryColor": null,
+                "buttonSecondaryColor": null
+            }
+        ],
+        "banLabels": ["Champion's name"],
+        "lobbyColor": [0, 0, 0],
+        "champPoolRerolls": 3,
+        "statsFetchIntervalActive": 1,
+        "statsFetchIntervalInactive": 5,
+        "buttons": {
+            "lol_lobby_close": "⏹️",
+            "lol_lobby_empty_button": "▪️",
+            "lol_lobby_connect_disconnect": "🔌",
+            "lol_lobby_champ_pool_hidden_on": "👀",
+            "lol_lobby_champ_pool_hidden_off": "👀",
+            "lol_lobby_team": "🆕"
+        },
+        "buttonPrimaryColor": null,
+        "buttonSecondaryColor": null
+    }
+    ```
+
+- **Fields**:
+
+    - **`teams`**: *array of team configurations*  
+        This field defines the two teams involved in the lobby, where each team has its own settings.  
+        Each team is represented by an object with the following configuration options:
+
+        - **`color`**: *array*  
+        Defines the RGB color of the team's embed in the lobby. The format is [R, G, B].
+
+        - **`name`**: *string*  
+        The name of the team, which is displayed in the lobby. This helps distinguish between the teams and can be customized to any desired name.  
+
+        - **`icon`**: *string*  
+        Defines the emoji that represents the team. The icon is typically used to visually distinguish the teams.  
+
+        - **`buttons`**: *object*  
+        A set of emoji buttons that control the leaderboard. Each button corresponds to a specific action.  
+        See [League of Legends Team Lobby Buttons](#team) for more information about each button.
+
+        - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+        Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+        - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+        Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.
+
+    - **`banLabels`**: *array of strings*  
+      Specifies the labels that will be used in the form for banning champions.  
+
+    - **`lobbyColor`**: *array*  
+      Defines the RGB color of the lobby's embed. The format is [R, G, B].
+
+    - **`champPoolRerolls`**: *integer*  
+      Defines the number of times a champion pool can be rerolled.  
+
+    - **`statsFetchIntervalActive`**: *integer*  
+      Defines the interval (in seconds) for fetching live game data when a game is detected.  
+
+    - **`statsFetchIntervalInactive`**: *integer*  
+      Defines the interval (in minutes) for fetching live game data when a game was not detected.  
+
+    - **`buttons`**: *object*  
+        A set of emoji buttons that control the leaderboard. Each button corresponds to a specific action.  
+        See [League of Legends Lobby Buttons](#lobby) for more information about each button.
+
+    - **`buttonPrimaryColor`**: *null or array of integers (RGB values)*  
+      Defines the primary color for the buttons. When set to `null`, no color is applied to the button.  
+
+    - **`buttonSecondaryColor`**: *null or array of integers (RGB values)*  
+      Defines the secondary color for the buttons. When set to `null`, no color is applied to the button.
+
+---
+
+## League of Legends Emojis Configuration
+
+- The League of Legends emojis are stored in a JSON file (`lol_emojis.json`) in the `emoji` directory inside the directory located at the `$DATA_PATH` path environemnt variable.
+- The file contains a mapping of League of Legends champions and ranks to corresponding emojis. It is used to associate specific champions or ranks with unique emojis, which can then be used in your application for visualization or communication.
+
+- **File Structure**
+
+    ```json
+    {
+        "champions": {
+            "CHAMPION_ID": "emoji",
+            "DEFAULT": "emoji"
+        },
+        "ranks": {
+            "bronze": "emoji",
+            "silver": "emoji",
+            "gold": "emoji",
+            "platinum": "emoji",
+            "diamond": "emoji"
+        }
+    }
+    ```
+
+    - **`champions`** 
+        - Each champion is represented by their **Riot ID** (official champion ID used in the DDragon API).
+        - The **Riot ID** is mapped to an emoji for visual representation.
+        - The `"DEFAULT"` key is provided as a fallback if a champion's emoji is not found in the list.
+    
+    - **`ranks`**
+        - Contains the major rank tiers used in League of Legends: [bronze, silver, gold, platinum, diamond].
+        - Each rank is mapped to a corresponding emoji.
+
+- **Fetching the Latest Data from DDragon API**
+
+    You can retrieve the latest champion data using the DDragon API. The process involves two steps:
+
+    1. **Get the latest version of DDragon** data from the following endpoint:
+
+        ```
+        https://ddragon.leagueoflegends.com/api/versions.json
+        ```
+
+    2. **Retrieve the champions' data** for the selected version using the URL format:
+
+        ```
+        https://ddragon.leagueoflegends.com/cdn/{latest_version}/data/en_US/champion.json
+        ```
+
+        Replace `{latest_version}` with the version you got from the previous step.
