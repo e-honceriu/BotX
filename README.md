@@ -34,6 +34,8 @@
     - [League of Legends Leaderboard Configuration](#league-of-legends-leaderboard-configuration)
     - [League of Legends Lobby Configuration](#league-of-legends-lobby-configuration)
     - [League of Legends Emojis Configuration](#league-of-legends-emojis-configuration)
+7. [License](#license)
+9. [Contributing](#contributing)
 
 # Introduction
 
@@ -1535,3 +1537,47 @@ Each emoji is processed by replacing its dark and light tones with the specified
         ```
 
         Replace `{latest_version}` with the version you got from the previous step.
+
+---
+
+## **License**
+
+This project is licensed under the terms of the **GNU General Public License (GPL) v3.0**. 
+
+- **Copyright (C) 2025 Emilian-Andrei Honceriu**
+- This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+- This program is distributed in the hope that it will be useful, but **without any warranty**, without even the implied warranty of merchantability or fitness for a particular purpose. See the [GNU General Public License](https://www.gnu.org/licenses/) for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+## **Contributing**
+
+Contributions to this project are welkome! To contribute, follow these steps:
+
+### 1. Fork the Repository
+- Click the "Fork" button at the top of the repository to create your own copy of the project.
+
+### 2. Create a New Branch
+- Create a new branch from `main` to work on your changes. It's good practice to name your branch descriptively (e.g., `fix-typos`, `add-new-feature`).
+
+### 3. Make Your Changes
+- Make your desired changes to the project. Ensure that you follow the project’s coding conventions and guidelines.
+
+### 4. Commit Your Changes
+- Write clear, concise commit messages to explain the changes you've made.
+
+### 5. Push to Your Fork
+- Push your changes to the branch you created in your forked repository.
+
+### 6. Create a Pull Request
+- Open a pull request (PR) from your fork to the main repository. Describe the changes you've made and why they should be merged.
+
+### 7. Review Process
+- After submitting your PR, it will be reviewed. If there are any suggestions or modifications required, the repository maintainers will provide feedback.
+
+### Reporting Issues
+If you encounter bugs or have suggestions for improvements, feel free to open an issue in the repository.
+
+Thank you for your contributions!
