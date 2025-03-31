@@ -7,5 +7,7 @@
         "playlist_guild_manager_manage": "🔧",
         "playlist_guild_manager_add": "➕",
         "playlist_guild_manager_remove": "➖"
-    }
+    },
+    "buttonPrimaryColor": null,
+    "buttonSecondaryColor": null
 }

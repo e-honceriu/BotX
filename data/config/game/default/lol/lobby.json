@@ -9,7 +9,9 @@
             "buttons": {
                 "lol_lobby_draft": "🎲",
                 "lol_lobby_ban": "🚫"
-            }
+            },
+            "buttonPrimaryColor": null,
+            "buttonSecondaryColor": null
         },
         {
             "color": [
@@ -20,7 +22,9 @@
             "buttons": {
                 "lol_lobby_draft": "🎲",
                 "lol_lobby_ban": "🚫"
-            }
+            },
+            "buttonPrimaryColor": null,
+            "buttonSecondaryColor": null
         }
     ],
     "banLabels": [
@@ -37,5 +41,7 @@
         "lol_lobby_champ_pool_hidden_on": "👀",
         "lol_lobby_champ_pool_hidden_off": "👀",
         "lol_lobby_team": "🆕"
-    }
+    },
+    "buttonPrimaryColor": null,
+    "buttonSecondaryColor": null
 }

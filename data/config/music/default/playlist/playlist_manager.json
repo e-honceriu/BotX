@@ -7,5 +7,7 @@
         "playlist_manager_delete": "🗑️",
         "playlist_manager_add": "➕",
         "playlist_manager_remove": "➖"
-    }
+    },
+    "buttonPrimaryColor": null,
+    "buttonSecondaryColor": null
 }

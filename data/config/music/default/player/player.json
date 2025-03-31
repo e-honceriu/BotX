@@ -21,5 +21,7 @@
         "music_player_volume_up": "🔊",
         "music_player_volume_down": "🔉",
         "music_player_restart": "🔄"
-    }
+    },
+    "buttonPrimaryColor": null,
+    "buttonSecondaryColor": null
 }

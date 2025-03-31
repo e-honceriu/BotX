@@ -44,5 +44,7 @@
         "lol_leaderboard_refresh": "🔄",
         "lol_leaderboard_prev_page": "⬅️",
         "lol_leaderboard_next_page": "➡️"
-    }
+    },
+    "buttonPrimaryColor": null,
+    "buttonSecondaryColor": null
 }
